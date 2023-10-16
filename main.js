@@ -19,16 +19,13 @@ function calcularPromedios() {
 
     do {
 
-        {
+        // Pedimos la cantidad de calificaciones
+        cantidadNotas = parseInt(prompt("Bienvenido " + nombre + " ingrese la cantidad de notas a promediar"));
 
-            // Pedimos la cantidad de calificaciones
-            cantidadNotas = parseInt(prompt("Bienvenido " + nombre + " ingrese la cantidad de notas a promediar"));
+        // Nos aseguramos que sea un número positivo
 
-            // Nos aseguramos que sea un número positivo
-
-            if (cantidadNotas <= 0) {
-                alert("Por favor ingrese un número válido");
-            }
+        if (cantidadNotas <= 0) {
+            alert("Por favor ingrese un número válido");
         }
     }
 
@@ -37,9 +34,17 @@ function calcularPromedios() {
     // Pedimos que ingrese las calificaciones
 
     for (let i = 1; i <= cantidadNotas; i++) {
-        nota = parseInt(prompt("Ingrese su calificación"));
-        console.log(nota);
+        let nota
+        do {
+            nota = parseInt(prompt("Ingrese su calificación"));
+            if (nota <= 0) {
+                alert("Por favor ingrese una calificación válida");
+            }
+        }
+        while (nota <= 0);
+
         sumaNotas += nota;
+        console.log(nota);
 
         // Notas más alta y más baja
 

@@ -1,10 +1,6 @@
 // Variables
 
 let nombre;
-let promedio = 0;
-let sumaNotas = 0;
-let notaMasAlta = -Infinity;
-let NotaMasBaja = Infinity;
 
 // Funciones
 
@@ -54,7 +50,7 @@ function calcularPromedios() {
         sumaNotas += nota;
         console.log(nota);
 
-        // Notas más alta y más baja
+        // Nota más alta y más baja
 
         if (nota > notaMasAlta) {
             notaMasAlta = nota;
@@ -75,19 +71,14 @@ function calcularPromedios() {
         console.log("Tu nota mas baja fue un " + NotaMasBaja);
     }
 
-    let pedirOtroPromedio;
+    let pedirOtroPromedio = prompt("Desea calcular otro promedio? Ingrese 'Sí' para consultar o cualquier otra cosa para salir");
 
-    do {
-        pedirOtroPromedio = prompt("Desea calcular otro promedio? Ingrese Sí para consultar o cualquier otra cosa para salir")
-        if (pedirOtroPromedio === "Sí") {
-            pedirNombre();
-            calcularPromedios();
-        }
+    if (pedirOtroPromedio === "Sí") {
+        pedirNombre();
+        calcularPromedios();
+    } else {
+        console.log("Gracias por usar el programa. ¡Hasta luego!");
     }
-    while (pedirOtroPromedio === "Sí");
-
-
-
 }
 
 // Llamado a las funciones

@@ -9,8 +9,9 @@ function pedirNombre() {
     return nombre;
 }
 
-function calcularPromedios() {
+function calcularPromedios(nombre) {
 
+    let pedirOtroPromedio
     let promedio = 0;
     let sumaNotas = 0;
     let notaMasAlta = -Infinity;
@@ -35,7 +36,9 @@ function calcularPromedios() {
     // Pedimos que ingrese las calificaciones
 
     for (let i = 1; i <= cantidadNotas; i++) {
+
         let nota
+
         do {
             nota = parseInt(prompt("Ingrese su calificación"));
 
@@ -43,9 +46,11 @@ function calcularPromedios() {
                 alert("Por favor ingrese una calificación válida");
             }
         }
+
         while (nota <= 0 || (isNaN(nota)));
 
         sumaNotas += nota;
+
         console.log(nota);
 
         // Nota más alta y más baja
@@ -68,11 +73,11 @@ function calcularPromedios() {
         console.log("Tu nota mas baja fue un " + notaMasBaja);
     }
 
-    let pedirOtroPromedio = prompt("Desea calcular otro promedio? Ingrese 'Sí' para consultar o cualquier otra cosa para salir del programa");
+    pedirOtroPromedio = prompt("Desea calcular otro promedio? Ingrese 'Sí' para consultar o cualquier otra cosa para salir del programa");
 
     if (pedirOtroPromedio === "Sí") {
-        pedirNombre();
-        calcularPromedios();
+        nombre = pedirNombre();
+        calcularPromedios(nombre);
     } else {
         console.log("Gracias por usar nuestro programa. Hasta luego!");
     }
@@ -81,5 +86,4 @@ function calcularPromedios() {
 // Llamado a las funciones
 
 let nombre = pedirNombre();
-calcularPromedios();
-
+calcularPromedios(nombre);

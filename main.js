@@ -9,12 +9,19 @@ let NotaMasBaja = Infinity;
 // Funciones
 
 function pedirNombre() {
-    nombre = prompt("Ingrese su nombre");
+    do {
+        nombre = prompt("Ingrese su nombre");
+    } while (!nombre);
     console.log("Bienvenido " + nombre);
 }
 
+
 function calcularPromedios() {
 
+    let promedio = 0;
+    let sumaNotas = 0;
+    let notaMasAlta = -Infinity;
+    let NotaMasBaja = Infinity;
     let cantidadNotas;
 
     do {
@@ -24,12 +31,12 @@ function calcularPromedios() {
 
         // Nos aseguramos que sea un número positivo
 
-        if (cantidadNotas <= 0) {
+        if (cantidadNotas <= 0 || (isNaN(cantidadNotas))) {
             alert("Por favor ingrese un número válido");
         }
     }
 
-    while (cantidadNotas <= 0);
+    while (cantidadNotas <= 0 || (isNaN(cantidadNotas)));
 
     // Pedimos que ingrese las calificaciones
 
@@ -37,11 +44,12 @@ function calcularPromedios() {
         let nota
         do {
             nota = parseInt(prompt("Ingrese su calificación"));
-            if (nota <= 0) {
+
+            if (nota <= 0 || (isNaN(nota))) {
                 alert("Por favor ingrese una calificación válida");
             }
         }
-        while (nota <= 0);
+        while (nota <= 0 || (isNaN(nota)));
 
         sumaNotas += nota;
         console.log(nota);
@@ -56,7 +64,6 @@ function calcularPromedios() {
             NotaMasBaja = nota;
         }
 
-
     }
 
     // Calculamos el promedio
@@ -67,9 +74,24 @@ function calcularPromedios() {
         console.log("Tu nota mas alta fue un " + notaMasAlta);
         console.log("Tu nota mas baja fue un " + NotaMasBaja);
     }
+
+    let pedirOtroPromedio;
+
+    do {
+        pedirOtroPromedio = prompt("Desea calcular otro promedio? Ingrese Sí para consultar o cualquier otra cosa para salir")
+        if (pedirOtroPromedio === "Sí") {
+            pedirNombre();
+            calcularPromedios();
+        }
+    }
+    while (pedirOtroPromedio === "Sí");
+
+
+
 }
 
 // Llamado a las funciones
 
 pedirNombre();
 calcularPromedios();
+
